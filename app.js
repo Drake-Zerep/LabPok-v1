@@ -74,12 +74,21 @@ function seedState(){
   const phase2=phase2Templates();
   return {schema:'labpok.v1',app:'LabPok v1',createdAt:new Date().toISOString(),updatedAt:new Date().toISOString(),settings:{theme:'black-gold-neon'},actions:actionDefaults(),tables:[...tables,...phase2],categories:['OR','ISO RAISE','3BET / CC','VS 3BET','4BET','BB DEFENSE','BLIND vs BLIND'],guide:[],leaks:[],training:{},notes:[]};
 }
-function normalizeState(){
-  state.actions={...actionDefaults(),...(state.actions||{})};
-  state.categories=[...(state.categories||[])];
-  const extra=['OR','ISO RAISE','3BET / CC','VS 3BET','4BET','BB DEFENSE','BLIND vs BLIND'];for(const c of extra)if(!state.categories.includes(c))state.categories.push(c);
-  state.tables=(state.tables||[]).map(t=>{t.cells=t.cells||blankCells();t.history=t.history||[];t.version=t.version||1;return t});
-  return state;
+function normalizeState(input){
+  const s=clone(input || state || {});
+  s.schema=s.schema||'labpok.v1';
+  s.actions={...actionDefaults(),...(s.actions||{})};
+  s.categories=[...(s.categories||[])];
+  const extra=['OR','ISO RAISE','3BET / CC','VS 3BET','4BET','BB DEFENSE','BLIND vs BLIND'];
+  for(const c of extra) if(!s.categories.includes(c)) s.categories.push(c);
+  s.tables=(s.tables||[]).map(t=>{
+    t.cells=t.cells||blankCells();
+    t.history=t.history||[];
+    t.version=t.version||1;
+    t.updated=t.updated||new Date().toISOString();
+    return t;
+  });
+  return s;
 }
 function actionDef(key){return state.actions[key]||BUILTIN_ACTIONS.fold}
 function actionCss(key){const a=actionDef(key);return `--cell-bg:${a.color};--cell-text:${a.text||'#fff'};`}
