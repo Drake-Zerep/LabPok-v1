@@ -2,27 +2,40 @@
 
 Centro personal de estudio de póker Cash 6-Max.
 
-## Fase 1
-- Dashboard futurista.
-- Gestor de tablas 13×13.
-- Crear, duplicar, editar y eliminar tablas.
-- Acciones configurables: OPEN, 3BET, CALL, FOLD, 4BET VALUE, 4BET BLUFF, MIX.
-- Notas y metadatos por tabla.
-- Versionado manual de tablas.
-- Exportar / importar backup JSON.
-- Datos iniciales separados del código.
+## Fase 2 — Preflop Lab
+- Arquitectura visual negro + dorado/neón.
+- Editor 13×13 reutilizable para cualquier módulo.
+- OR con LJ, HJ, CO pendiente, BTN y SB.
+- Plantillas de ISO RAISE.
+- Plantillas de 3BET / Cold Call.
+- Plantillas de VS 3BET.
+- Plantillas de 4BET.
+- BB DEFENSE validado disponible.
+- Plantillas Blind vs Blind.
+- Tablas PENDIENTES claramente separadas de las VALIDADO.
+- No se inventan rangos de Fase 2: las plantillas se completarán con los datos que vayamos validando.
+
+## Acciones personalizables
+Desde **Pintar acción → ⚙ Personalizar** puedes:
+- Cambiar el nombre de una acción.
+- Cambiar su color.
+- Crear acciones nuevas (por ejemplo MIX, JAM, COLD 4BET, etc.).
+- Eliminar acciones personalizadas; las casillas que las usaban vuelven a FOLD.
+- Las acciones y sus colores forman parte del backup JSON.
+
+## Datos y backups
+- Exporta un backup JSON completo.
+- Importa el backup en otro equipo.
+- Cada tabla mantiene historial de versiones.
+- El proyecto no depende de localStorage para conservar la estrategia.
 
 ## Uso
 Abre `index.html` directamente en el navegador. No requiere servidor ni dependencias.
 
-### Importante sobre los datos
-Los cambios se mantienen en memoria mientras la página está abierta. Usa **Exportar backup** antes de cerrar o recargar para conservar cambios. El archivo JSON exportado es la fuente de respaldo y puede volver a importarse en otro equipo.
-
 ## GitHub Pages
-Puedes subir todo el contenido de esta carpeta a un repositorio nuevo y activar GitHub Pages desde `Settings → Pages → Deploy from a branch`.
+Sube el contenido de esta carpeta a un repositorio nuevo y activa GitHub Pages desde `Settings → Pages → Deploy from a branch`.
 
 ## Próximas fases
-- Fase 2: OR / ISO / 3BET / CC / VS 3BET / 4BET / BB / BvB.
-- Fase 3: Guía de póker.
-- Fase 4: entrenamiento y quiz.
+- Fase 3: Guía de póker completa.
+- Fase 4: entrenamiento y quiz conectado a las mismas tablas.
 - Fase 5: manos, leaks y evolución.
